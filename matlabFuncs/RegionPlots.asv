@@ -1,0 +1,34 @@
+function RegionPlots(Table, POP, columns, figNo)
+addpath(genpath('RegionPlots/'));
+labels1 = [];
+labels2=[];
+figure(figNo)
+counter = 0;
+for i = 1:width(Table)
+    if ~strcmp(columns{i}, 'data') & contains(columns{i}, 'confirmados') & (count( columns{i},....
+            '_') == 1) & ~contains(columns{i}, 'desconhecidos') & (counter <7)
+        
+        label = split(columns{i},'_');
+                
+        subplot(1,2,1);
+        labels1 = Relative(Table, columns, POP, label, i, labels1)
+
+        subplot(1,2,2);
+        labels2 = Nominal(Table, columns, label, i, labels2)
+        
+        counter =counter +1;
+    end
+end
+subplot(1,2,1);
+title('Relative')
+
+legend(labels1')
+
+subplot(1,2,2);
+title('Nominal')
+legend(labels2')
+
+suptitle('Region Plots')
+
+xlim([datetime('Jan-2020'), datetime('10-Mar-2021')])
+end
