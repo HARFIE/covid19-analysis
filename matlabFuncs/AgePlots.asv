@@ -38,10 +38,7 @@ for i = 1:width(Table)
                 
                 
                 plot(Table.('data'),100*Table.(columns{i})/IDADES.(char(label)), 'x-');
-                label = split(columns{i},'_');
-                label = [label{4},' ',label{2},'-',label{3}];
-                label = string(label);
-                
+                label = 
                 labels = [labels, label];
                 hold on;
                 

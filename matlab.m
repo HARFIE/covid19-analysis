@@ -21,9 +21,8 @@ columns = Table.Properties.VariableNames;
 figs = []
 %% Region Plots
 figNo = 1;
-RegionPlots(Table, POP, columns, figNo);
+%RegionPlots(Table, POP, columns, figNo);
 figs = [figs, gcf]
-
 
 %% Sex Plots
 figNo = 2;
