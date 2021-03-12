@@ -31,9 +31,9 @@ SexPlots(Table, POP, columns, figNo);
 figs = [figs, gcf]
 %% Age Plots
 figNo = 3;
-%AgePlots(Table, IDADES, columns, figNo);
+AgePlots(Table, IDADES, columns, figNo);
 figs = [figs, gcf]
 %% Sintoms Plots
 figNo=4;
-%SintomasPlots(Table, columns, figNo)
+SintomasPlots(Table, columns, figNo)
 figs = [figs, gcf]
