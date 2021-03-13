@@ -34,10 +34,10 @@ for i = 1:width(Table)
             
             if contains(aux_table.('labels'){j}, label)
                 
-                subplot(1,2,1);
+                subplot(2,2,1);
                 
                 
-                plot(Table.('data'),100*Table.(columns{i})/IDADES.(char(label)), 'x-');
+                plot(Table.('data'),100*Table.(columns{i})./IDADES.(char(label)), 'x-');
                 label = split(columns{i},'_');
                 label = [label{4},' ',label{2},'-',label{3}];
                 label = string(label);
@@ -45,9 +45,13 @@ for i = 1:width(Table)
                 labels = [labels, label];
                 hold on;
                 
-                subplot(1,2,2);
-                plot(Table.('data'),Table.(columns{i}), 'x-');
-                hold on;
+                subplot(2,2,2);
+                title2 = Nominal(Table, columns{i}, label);
+                
+                subplot(2,1,2);
+                title3 = ObitosRelative(Table, columns{i}, label);
+                
+                
                 
             end
         end
@@ -55,13 +59,18 @@ for i = 1:width(Table)
         counter =counter +1;
     end
 end
-subplot(1,2,1)
+subplot(2,2,1)
 legend(labels)
 title('Relative')
 
-subplot(1,2,2)
+subplot(2,2,2)
 legend(labels)
-title('Nominal')
+title(title2)
+
+subplot(2,1,2)
+legend(labels)
+title(title3)
+
 
 suptitle('Age Plots')
 end

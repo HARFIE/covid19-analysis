@@ -13,10 +13,9 @@ for i = 1:width(Table)
             label = 'feminino';
         end
         
-        labels = [labels, string(label)];
 
         subplot(2,2,1);
-        plot(Table.('data'),100*Table.(columns{i})/POP.(label), 'x-');
+        plot(Table.('data'),100*Table.(columns{i})./POP.(label), 'x-');
         hold on;
         
         subplot(2,2,2);
@@ -26,6 +25,9 @@ for i = 1:width(Table)
         subplot(2,1,2);
         title3 = ObitosRelative(Table, columns{i}, label);
         
+        
+        
+        labels = [labels, string(label)];
         counter =counter +1;
     end
 end
