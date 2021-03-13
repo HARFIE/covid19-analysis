@@ -23,8 +23,11 @@ for i = 1:width(Table)
         plot(Table.('data'),Table.(columns{i}), 'x-');
         hold on;
         
-        subplot(2,1,2);
+        subplot(2,2,3);
         title3 = ObitosRelative(Table, columns{i}, label);
+        
+        
+        
         
         counter =counter +1;
     end
@@ -37,9 +40,6 @@ subplot(2,2,2)
 legend(labels)
 title('Nominal')
 
-subplot(2,1,2)
-legend(labels)
-title(title3)
 
 suptitle('Sex Plots')
 end
