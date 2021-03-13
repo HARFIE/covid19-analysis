@@ -7,8 +7,8 @@ labels = [];
 for i = 1:width(Table)
     if ~strcmp(columns{i}, 'data') & contains(columns{i}, 'sintomas')
         
-        label = split(columns{i},'_');
-        label = string(label{2});
+        label = string(strrep(strrep(columns{i}, 'sintomas_', ''), '_', ' '))
+        
         
         subplot(1,1,1);
         plot(Table.('data'), Table.(columns{i}), 'x-');
@@ -21,6 +21,7 @@ end
 
 subplot(1,1,1);
 title('Sintomas');
-legend(labels');
+lgd = legend(labels');
+lgd.FontSize = 14;
 
 end

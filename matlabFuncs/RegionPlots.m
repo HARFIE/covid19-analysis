@@ -31,22 +31,26 @@ for i = 1:width(Table)
 end
 subplot(2,2,1);
 title(title1)
-legend(labels')
+lgd = legend(labels');
+lgd.FontSize = 14;
 hold on;
 
 subplot(2,2,2);
 title(title2);
-legend(labels');
+lgd = legend(labels');
+lgd.FontSize = 14;
 hold on;
 
 subplot(2,2,3);
 title(title3);
-legend(labels');
+lgd = legend(labels');
+lgd.FontSize = 14;
 hold on;
 
 subplot(2,2,4);
 title(title4);
-legend(labels');
+lgd = legend(labels');
+lgd.FontSize = 14;
 hold on;
 
 

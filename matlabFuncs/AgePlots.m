@@ -60,15 +60,18 @@ for i = 1:width(Table)
     end
 end
 subplot(2,2,1)
-legend(labels)
+lgd = legend(labels);
+lgd.FontSize = 14;
 title('Relative')
 
 subplot(2,2,2)
-legend(labels)
+lgd = legend(labels);
+lgd.FontSize = 14;
 title(title2)
 
 subplot(2,1,2)
-legend(labels)
+lgd = legend(labels);
+lgd.FontSize = 14;
 title(title3)
 
 
