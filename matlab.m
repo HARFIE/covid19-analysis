@@ -4,7 +4,7 @@ clear
 close all
 
 addpath(genpath('matlabFuncs/'));
-addpath(genpath('matlabFuncs/XLIM/'));
+addpath(genpath('matlabFuncs/ExtraFuncs/'));
 
 %%  Read table
 Table = readtable('data.csv');
@@ -16,23 +16,59 @@ Table = sortrows(Table, 'data');
 columns = Table.Properties.VariableNames;
 
 %% Constants
-[POP, IDADES] = CreateConstants()
+[POP, IDADES] = CreateConstants();
 
-figs = []
+figs = [];
+fignames = [];
+
 %% Region Plots
 figNo = 1;
-RegionPlots(Table, POP, columns, figNo);
-figs = [figs, gcf]
+figName = 'Nofig';
+figName = RegionPlots(Table, POP, columns, figNo);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
 
 %% Sex Plots
 figNo = 2;
-SexPlots(Table, POP, columns, figNo);
-figs = [figs, gcf]
+figName = 'Nofig';
+figName = SexPlots(Table, POP, columns, figNo);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
 %% Age Plots
 figNo = 3;
-AgePlots(Table, IDADES, columns, figNo);
-figs = [figs, gcf]
+figName = 'Nofig';
+figName = AgePlots(Table, IDADES, columns, figNo);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
 %% Sintoms Plots
 figNo=4;
-SintomasPlots(Table, columns, figNo)
-figs = [figs, gcf]
+figName = 'Nofig';
+figName = SintomasPlots(Table, columns, figNo);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
+%% General Plots
+figNo=5;
+figName = 'Nofig';
+figName = GeneralPlots(Table, columns, figNo, POP);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
+%% Save Plots
+
+msg = 'Do you want to save all figures?(y/n)';
+answer = input(msg, 's');
+if lower(answer) == 'y'
+    
+
+    for fig_i = 1:length(figs)
+        figPath = ['Figs/',char(fignames(fig_i))];
+        
+        SaveFig(figs(fig_i), figPath);
+    end
+end
+
+%% Close Figs
+msg = 'Do you want to close all figures?(y/n)';
+answer = input(msg, 's');
+if lower(answer) == 'y'
+    close all
+end

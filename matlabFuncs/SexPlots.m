@@ -1,5 +1,7 @@
-function SexPlots(Table, POP, columns, figNo)
-addpath(genpath('SexPlots/'));
+function FigName = SexPlots(Table, POP, columns, figNo)
+addpath(genpath('SubFuncs/'));
+figName = 'Sex Plots';
+
 figure(figNo)
 labels = [];
 counter = 0;
@@ -13,38 +15,34 @@ for i = 1:width(Table)
             label = 'feminino';
         end
         
-
         subplot(2,2,1);
-        plot(Table.('data'),100*Table.(columns{i})./POP.(label), 'x-');
-        hold on;
+        title1 = Relative(Table, columns{i}, POP, label);
         
         subplot(2,2,2);
-        plot(Table.('data'),Table.(columns{i}), 'x-');
-        hold on;
+        title2 = Nominal(Table, columns{i});
         
         subplot(2,1,2);
-        title3 = ObitosRelative(Table, columns{i}, label);
-        
-        
-        
+        title3 = ObitosRelative(Table, columns{i});
+
         labels = [labels, string(label)];
         counter =counter +1;
     end
 end
 subplot(2,2,1)
-lgd = legend(labels);
+lgd = legend(labels, 'Location', 'best', 'FontSize', 14);
 lgd.FontSize = 14;
-title('Relative')
+title(title1)
 
 subplot(2,2,2)
-lgd = legend(labels);
+lgd = legend(labels, 'Location', 'best', 'FontSize', 14);
 lgd.FontSize = 14;
-title('Nominal')
+title(title2)
 
 subplot(2,1,2)
-lgd = legend(labels);
+lgd = legend(labels, 'Location', 'best', 'FontSize', 14);
 lgd.FontSize = 14;
 title(title3)
 
-suptitle('Sex Plots')
+suptitle(figName)
+FigName = strrep(figName, ' ', '');
 end

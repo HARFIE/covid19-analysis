@@ -1,5 +1,5 @@
-function [ title] = ObitosRelative(Table, colname, label)
-    title = 'Percentage of obits from confirmed';
+function [ title] = ObitosRelative(Table, colname)
+    title = 'Percentage of Deaths from confirmed cases';
     
     obit_name = strrep(colname, 'confirmados', 'obitos');
     

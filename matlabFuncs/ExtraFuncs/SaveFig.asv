@@ -1,0 +1,3 @@
+function SaveFig(FigHandle, FigName)
+FigHandle = figure('Position', get(0, 'Screensize'));
+saveas(FigH, 'Foos.png','png');
