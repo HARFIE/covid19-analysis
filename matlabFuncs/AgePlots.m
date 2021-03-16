@@ -57,17 +57,14 @@ for i = 1:width(Table)
 end
 subplot(2,2,1)
 lgd = legend(labels, 'Location', 'best', 'FontSize', 14);
-lgd.FontSize = 14;
 title(title1)
 
 subplot(2,2,2)
 lgd = legend(labels, 'Location', 'best', 'FontSize', 14);
-lgd.FontSize = 14;
 title(title2)
 
 subplot(2,1,2)
 lgd = legend(labels, 'Location', 'best', 'FontSize', 14);
-%lgd.FontSize = 14;
 title(title3);
 
 

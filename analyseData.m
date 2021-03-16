@@ -5,9 +5,10 @@ close all
 
 addpath(genpath('matlabFuncs/'));
 addpath(genpath('matlabFuncs/ExtraFuncs/'));
+addpath(genpath('matlabFuncs/UserInterface/'));
 
 %%  Read table
-Table = readtable('data.csv');
+Table = readtable('datasets/data.csv');
 Table.('data') = datetime(Table.('data'),'InputFormat', 'dd-MM-yyyy');
 
 Table.('data_dados') = datetime(Table.('data_dados'),'InputFormat', 'dd-MM-yyyy hh:mm');
@@ -24,51 +25,46 @@ fignames = [];
 %% Region Plots
 figNo = 1;
 figName = 'Nofig';
-figName = RegionPlots(Table, POP, columns, figNo);
+%figName = RegionPlots(Table, POP, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 
 %% Sex Plots
 figNo = 2;
 figName = 'Nofig';
-figName = SexPlots(Table, POP, columns, figNo);
+%figName = SexPlots(Table, POP, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 %% Age Plots
 figNo = 3;
 figName = 'Nofig';
-figName = AgePlots(Table, IDADES, columns, figNo);
+%figName = AgePlots(Table, IDADES, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 %% Sintoms Plots
 figNo=4;
 figName = 'Nofig';
-figName = SintomasPlots(Table, columns, figNo);
+%figName = SintomasPlots(Table, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 %% General Plots
 figNo=5;
 figName = 'Nofig';
-figName = GeneralPlots(Table, columns, figNo, POP);
+%figName = GeneralPlots(Table, columns, figNo, POP);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
-%% Save Plots
 
-msg = 'Do you want to save all figures?(y/n)';
-answer = input(msg, 's');
-if lower(answer) == 'y'
-    
+%% Hospitalized Plots
+figNo=6;
+figName = 'Nofig';
+figName = HospitalizedPlots(Table, columns, figNo);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
 
-    for fig_i = 1:length(figs)
-        figPath = ['Figs/',char(fignames(fig_i))];
-        
-        SaveFig(figs(fig_i), figPath);
-    end
-end
+%% User Interface
 
-%% Close Figs
-msg = 'Do you want to close all figures?(y/n)';
-answer = input(msg, 's');
-if lower(answer) == 'y'
-    close all
-end
+UI_Change_Xaxis(figs);
+
+UI_Save_Figures(figs, fignames);
+
+UI_Close_All();

@@ -1,4 +1,6 @@
 function [POP, IDADES]=CreateConstants()
+
+
 % 2011 Census
 POP_NORTE = 3818722;
 POP_LVT = 2808414;
@@ -21,6 +23,9 @@ IDADES = table(492373, 552682, 620270, 817209, 797441, 731668, 634892, 572510, 2
 
 POP = table(POP_NORTE, POP_LVT, POP_CENTRO, POP_ALENTEJO, POP_ALGARVE, POP_MADEIRA, POP_ACORES, POP_TOTAL, POP_M, POP_F, 'VariableNames',...
     {'arsnorte','arscentro','arslvt', 'arsalentejo', 'arsalgarve', 'acores', 'madeira', 'total', 'masculino', 'feminino'});
-%load('POP.mat')
+
+% Alternatively the matrices can be loaded instead of created:
+%load('myMatrices_Census2011/IDADES.mat')
+%load('myMatrices_Census2011/POP.mat')
 
 end
