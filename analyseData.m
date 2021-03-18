@@ -57,9 +57,17 @@ fignames = [fignames, string(figName)];
 %% Hospitalized Plots
 figNo=6;
 figName = 'Nofig';
-figName = HospitalizedPlots(Table, columns, figNo);
+%figName = HospitalizedPlots(Table, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
+
+%% Active Plots
+figNo=5;
+figName = 'Nofig';
+figName = ActivePlots(Table, columns, figNo);
+figs = [figs, gcf];
+fignames = [fignames, string(figName)];
+
 
 %% User Interface
 

@@ -24,11 +24,11 @@ for i = 1:width(Table)
         subplot(2,2,4);
         title4 = RecuperadosRelative(Table, columns{i});
         
-        
         labels = [labels, string(label)];
         counter =counter +1;
     end
 end
+
 
 subplot(2,2,1)
 title(title1)
@@ -41,6 +41,7 @@ title(title3)
 
 subplot(2,2,4)
 title(title4)
+
 
 
 suptitle(figName)
