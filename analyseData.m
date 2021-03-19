@@ -25,39 +25,39 @@ fignames = [];
 %% Region Plots
 figNo = 1;
 figName = 'Nofig';
-%figName = RegionPlots(Table, POP, columns, figNo);
+figName = RegionPlots(Table, POP, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 
 %% Sex Plots
 figNo = 2;
 figName = 'Nofig';
-%figName = SexPlots(Table, POP, columns, figNo);
+figName = SexPlots(Table, POP, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 %% Age Plots
 figNo = 3;
 figName = 'Nofig';
-%figName = AgePlots(Table, IDADES, columns, figNo);
+figName = AgePlots(Table, IDADES, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 %% Sintoms Plots
 figNo=4;
 figName = 'Nofig';
-%figName = SintomasPlots(Table, columns, figNo);
+figName = SintomasPlots(Table, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 %% General Plots
 figNo=5;
 figName = 'Nofig';
-%figName = GeneralPlots(Table, columns, figNo, POP);
+figName = GeneralPlots(Table, columns, figNo, POP);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 
 %% Hospitalized Plots
 figNo=6;
 figName = 'Nofig';
-%figName = HospitalizedPlots(Table, columns, figNo);
+figName = HospitalizedPlots(Table, columns, figNo);
 figs = [figs, gcf];
 fignames = [fignames, string(figName)];
 

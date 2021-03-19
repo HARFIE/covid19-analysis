@@ -45,7 +45,7 @@ for i = 1:width(Table)
             text(xinterc,70+counter-2,string(xinterc),'VerticalAlignment',...
                 'bottom','HorizontalAlignment','right',...
                 'FontSize', 20, 'Color', color);
-            counter = counter *  -1;
+            counter = counter *  -1.5;
         end
         
         % Build label list for this axis
