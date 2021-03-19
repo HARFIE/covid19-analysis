@@ -52,11 +52,11 @@ title(title1)
 
 subplot(2,2,2)
 title(title2)
-lgd = legend(labels2, 'Position', 'best')
+lgd = legend(labels2, 'Location', 'best')
 
 subplot(2,1,2)
 title(title3)
-lgd = legend(labels3, 'Position', 'best')
+lgd = legend(labels3, 'Location', 'best')
 
 
 suptitle(figName)
