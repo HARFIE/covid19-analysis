@@ -8,7 +8,7 @@ labels1 = [];
 counter = 4;
 countr = 0;
 axes = [];
-HAlign = ["right", "left"];
+HAlign = [
 
 %% Line Plots
 for i = 1:width(Table)
@@ -44,25 +44,19 @@ for i = 1:width(Table)
         % Plot Interception
         plot(xq, yq, '--', 'Color', color)
         
-        
-        % Build label list for this axis
-        labelq = sprintf('%s %s',label, 'extrapolation');
-        labels1 = [labels1, label, labelq];
-        
         % Plot Markers and Text
         if isa(xinterc, 'datetime')
             plot(xinterc, 70, 'o','Color',color,'MarkerSize',12,'LineWidth',2);
-            text(xinterc-counter*2,70+counter-2,string(xinterc),'VerticalAlignment',...
-                'bottom','HorizontalAlignment',HAlign(mod(countr,2)+1),...
+            text(xinterc+counter*2,70+counter-2,string(xinterc),'VerticalAlignment',...
+                'bottom','HorizontalAlignment','right',...
                 'FontSize', 20, 'Color', color);
             counter = counter *  -1.75;
-            
-            % Build label list for this axis
-            labelp = sprintf('%s %s',label, '- Date achieving 70%');
-            labels1 = [labels1, labelp]
         end
         
-        
+        % Build label list for this axis
+        labelq = sprintf('%s %s',label, 'extrapolation');
+        labelp = sprintf('%s %s',label, '- Date achieving 70%');
+        labels1 = [labels1, label, labelq, labelp];
         
         
         
