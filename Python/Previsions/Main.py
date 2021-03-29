@@ -197,12 +197,12 @@ def test_NLT_LAG(table, target_shift = 7, n_Lag = 50, length_Lag = 7):
 	print(sub2)
 	plt.show()
 
-def test_NLAG(table, target_shift, n_Lag, length_Lag):
+def test_NLAG(table, target_shift, n_Lag, length_Lag, n_min, n_step):
 
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection = '3d')
 	
-	for N in range(n_Lag-20, n_Lag+1, 1):
+	for N in range(n_min, n_Lag+1, n_step):
 		model, trained, expected, predT, predS, Trainsize, Testsize, myInput, table_Ativ = test_LinearRegression(table,target_shift, N, length_Lag)
 
 		px = [N]*len(predS)
@@ -215,6 +215,9 @@ def test_NLAG(table, target_shift, n_Lag, length_Lag):
 		ax.plot(px,py,zs = pz, color = 'darkblue')
 		print(f'N: {N}\t Trainsize: {Trainsize}\t Testsize: {Testsize}\t Total: {Trainsize+Testsize}')
 
+	ax.set_xlabel('N_LAGS')
+	ax.set_ylabel('Days')
+	ax.set_zlabel('Daily active cases increase')
 	print(n_Lag)
 	plt.show()
 
@@ -288,9 +291,10 @@ if __name__ == '__main__':
 	table = RT.readTables(tables2read, columns2keep, verbose = 0)
 	clock.stopTimer(0,'Reading Tables Duration', verbose = True)
 
-	testNLG = True
+	testNLG = False
 	testNLag = True
 	# Testing ...
+	
 	if testNLG:
 		target_shift = 1#7
 		n_Lag = 100
@@ -303,7 +307,10 @@ if __name__ == '__main__':
 		n_Lag = 70
 		length_Lag = 1
 		target_shift = 1
-		test_NLAG(table, target_shift, n_Lag, length_Lag)
+		n_min = 1
+		n_step = 7
+
+		test_NLAG(table, target_shift, n_Lag, length_Lag, n_min, n_step)
 
 	# Finished Testing
 
