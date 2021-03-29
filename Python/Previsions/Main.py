@@ -201,7 +201,8 @@ def test_NLAG(table, target_shift, n_Lag, length_Lag, n_min, n_step):
 
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection = '3d')
-	
+	mses = []
+	Ns = []
 	for N in range(n_min, n_Lag+1, n_step):
 		model, trained, expected, predT, predS, Trainsize, Testsize, myInput, table_Ativ = test_LinearRegression(table,target_shift, N, length_Lag)
 
@@ -211,10 +212,23 @@ def test_NLAG(table, target_shift, n_Lag, length_Lag, n_min, n_step):
 
 		pe = expected
 
+
+		mse = (10**3)*np.mean((predS-expected)**2)/10**6
+		mses += [mse]
+		Ns += [N]
+
+
+		ax.bar([N], [mse], zs =[1], zdir = 'y', color = 'aqua', width = 5, alpha = 0.5)
 		ax.plot(px,py,zs = pe, color = 'darkgreen')
 		ax.plot(px,py,zs = pz, color = 'darkblue')
 		print(f'N: {N}\t Trainsize: {Trainsize}\t Testsize: {Testsize}\t Total: {Trainsize+Testsize}')
 
+
+	bx = Ns
+	by = [1]* len(Ns)
+	bz = mses
+
+	
 	ax.set_xlabel('N_LAGS')
 	ax.set_ylabel('Days')
 	ax.set_zlabel('Daily active cases increase')
